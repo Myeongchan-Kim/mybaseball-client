@@ -13,6 +13,12 @@
     <Filter Include="src\Player">
       <UniqueIdentifier>{14842a82-70eb-4e9c-b686-1ceb92a5cdaf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Scene">
+      <UniqueIdentifier>{36ba5ceb-0f6e-49eb-b879-03a981c0b7e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\LogicControl">
+      <UniqueIdentifier>{56591c9a-4196-46cf-a10b-aa320d3b4881}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,26 +27,26 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Batter.cpp">
+      <Filter>src\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Pitcher.cpp">
+      <Filter>src\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Player.cpp">
+      <Filter>src\Player</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Pitcher.cpp">
-      <Filter>src\Player</Filter>
+    <ClCompile Include="..\Classes\PlayScene.cpp">
+      <Filter>src\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>src\Player</Filter>
+    <ClCompile Include="..\Classes\GameController.cpp">
+      <Filter>src\LogicControl</Filter>
     </ClCompile>
-    <ClCompile Include="Batter.cpp">
-      <Filter>src\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="GameController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayScene.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="ResultMaker.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\Classes\ResultMaker.cpp">
+      <Filter>src\LogicControl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -50,26 +56,26 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Batter.h">
+      <Filter>src\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Pitcher.h">
+      <Filter>src\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player.h">
+      <Filter>src\Player</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>src</Filter>
+      <Filter>src\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Pitcher.h">
-      <Filter>src\Player</Filter>
+    <ClInclude Include="..\Classes\PlayScene.h">
+      <Filter>src\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>src\Player</Filter>
+    <ClInclude Include="..\Classes\GameController.h">
+      <Filter>src\LogicControl</Filter>
     </ClInclude>
-    <ClInclude Include="Batter.h">
-      <Filter>src\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="GameController.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayScene.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="ResultMaker.h">
-      <Filter>src</Filter>
+    <ClInclude Include="..\Classes\ResultMaker.h">
+      <Filter>src\LogicControl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
