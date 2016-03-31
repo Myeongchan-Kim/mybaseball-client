@@ -36,9 +36,6 @@
     <ClCompile Include="..\Classes\Player.cpp">
       <Filter>src\Player</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>src\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\PlayScene.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
@@ -46,6 +43,12 @@
       <Filter>src\LogicControl</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\ResultMaker.cpp">
+      <Filter>src\LogicControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MainScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TodoInfo.cpp">
       <Filter>src\LogicControl</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,9 +68,6 @@
     <ClInclude Include="..\Classes\Player.h">
       <Filter>src\Player</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>src\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\PlayScene.h">
       <Filter>src\Scene</Filter>
     </ClInclude>
@@ -75,6 +75,12 @@
       <Filter>src\LogicControl</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\ResultMaker.h">
+      <Filter>src\LogicControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainScene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TodoInfo.h">
       <Filter>src\LogicControl</Filter>
     </ClInclude>
   </ItemGroup>
