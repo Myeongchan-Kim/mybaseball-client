@@ -1,7 +1,5 @@
 #pragma once
-#include "Player.h"
-class Pitcher :
-	public Player
+class Pitcher 
 {
 public:
 	Pitcher();

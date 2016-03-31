@@ -51,6 +51,12 @@
     <ClCompile Include="..\Classes\TodoInfo.cpp">
       <Filter>src\LogicControl</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\CurTeamState.cpp">
+      <Filter>src\LogicControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Fielder.cpp">
+      <Filter>src\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -82,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\TodoInfo.h">
       <Filter>src\LogicControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CurTeamState.h">
+      <Filter>src\LogicControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Fielder.h">
+      <Filter>src\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
