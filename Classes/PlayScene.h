@@ -4,16 +4,30 @@
 #include "cocos2d.h"
 class GameController;
 class TodoInfo;
+class TeamState;
 
 class PlayScene : public cocos2d::Layer
 {
 public:
-	static cocos2d::Scene* createScene();
+	static cocos2d::Scene* createScene(TeamState* teamInfo);
+	static PlayScene* create(TeamState* teamInfo)
+	{
+		PlayScene *pRet = new(std::nothrow) PlayScene(teamInfo);
+		if (pRet && pRet->init())
+		{
+			pRet->autorelease();
+			return pRet;
+		}
+		else
+		{
+			delete pRet;
+			pRet = NULL;
+			return NULL;
+		}
+	};
 
 	virtual bool init();
 	virtual bool destroy();
-
-	CREATE_FUNC(PlayScene);
 
 private:
 	Layer* m_groundLayer = nullptr;
@@ -21,11 +35,13 @@ private:
 	Layer* m_gameLogLayer = nullptr;
 	Layer* m_messegaeLayer = nullptr;
 	GameController* m_game = nullptr;
+	TeamState* m_teamInfo = nullptr;
 
 
 	virtual void update(float dt) override;
 	void Excute(TodoInfo*);
 
+	PlayScene(TeamState* teamInfo);
 	~PlayScene();
 };
 
