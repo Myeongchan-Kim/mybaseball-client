@@ -51,11 +51,14 @@
     <ClCompile Include="..\Classes\TodoInfo.cpp">
       <Filter>src\LogicControl</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\CurTeamState.cpp">
-      <Filter>src\LogicControl</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Fielder.cpp">
       <Filter>src\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\header.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TeamState.cpp">
+      <Filter>src\LogicControl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,11 +92,17 @@
     <ClInclude Include="..\Classes\TodoInfo.h">
       <Filter>src\LogicControl</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CurTeamState.h">
-      <Filter>src\LogicControl</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Fielder.h">
       <Filter>src\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Const.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\header.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TeamState.h">
+      <Filter>src\LogicControl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

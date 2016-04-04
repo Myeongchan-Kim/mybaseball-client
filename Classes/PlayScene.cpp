@@ -1,11 +1,13 @@
+#include "header.h"
 #include "PlayScene.h"
 #include "GameController.h"
+#include "TodoInfo.h"
 USING_NS_CC;
 
-Scene* PlayScene::createScene()
+Scene* PlayScene::createScene(TeamState* teamInfo)
 {
 	auto scene = Scene::create();
-	auto layer = PlayScene::create();
+	auto layer = PlayScene::create(teamInfo);
 	scene->addChild(layer);
 
 	return scene;
@@ -28,6 +30,7 @@ bool PlayScene::init()
 
 	m_batterListLayer = Layer::create();
 	auto batterListBackground = Sprite::create();
+	m_batterListLayer->addChild(batterListBackground);
 
 	m_gameLogLayer = Layer::create();
 	m_messegaeLayer = Layer::create();
@@ -56,6 +59,12 @@ bool PlayScene::destroy()
 	delete m_game;
 	return false;
 }
+
+
+PlayScene::PlayScene(TeamState* teamInfo) : m_teamInfo(teamInfo)
+{
+};
+
 
 PlayScene::~PlayScene()
 {
