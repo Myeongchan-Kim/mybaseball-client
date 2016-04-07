@@ -43,8 +43,14 @@ bool PlayScene::init()
 
 void PlayScene::update(float dt)
 {
-	while (!m_game->IsTodoListEmpty())
+	while (!m_game->IsTodoListEmpty() && running_obj == 0)
 	{
+		if (running_obj < 0)
+		{
+			CCLOG("******RUNNING COUNT ERROR!*****");
+			throw true;
+		}
+			
 		Excute(m_game->PopTodoList());
 	}
 }

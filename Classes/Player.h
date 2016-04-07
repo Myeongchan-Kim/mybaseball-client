@@ -6,12 +6,14 @@ class Fielder;
 class Player
 {
 public:
-	Player();
+	Player(int id);
 	~Player();
 
 private:
-	Batter* batter;
-	Pitcher* pitcher;
-	Fielder* Fielder;
+	void request_stat(int id);
+
+	Batter* batter = nullptr;
+	Pitcher* pitcher = nullptr;
+	Fielder* Fielder = nullptr;
 };
 

@@ -36,7 +36,7 @@ private:
 	Layer* m_messegaeLayer = nullptr;
 	GameController* m_game = nullptr;
 	TeamState* m_teamInfo = nullptr;
-
+	int running_obj = 0;
 
 	virtual void update(float dt) override;
 	void Excute(TodoInfo*);
