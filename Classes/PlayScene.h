@@ -1,7 +1,6 @@
-#ifndef __PLAY_SCENE_H__
-#define __PLAY_SCENE_H__
+#pragma once
+#include "header.h"
 
-#include "cocos2d.h"
 class GameController;
 class TodoInfo;
 class TeamState;
@@ -44,5 +43,3 @@ private:
 	PlayScene(TeamState* teamInfo);
 	~PlayScene();
 };
-
-#endif // __HELLOWORLD_SCENE_H__

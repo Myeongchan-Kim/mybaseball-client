@@ -95,14 +95,14 @@
     <ClInclude Include="..\Classes\Fielder.h">
       <Filter>src\Player</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Const.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\header.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\TeamState.h">
       <Filter>src\LogicControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ConstVar.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

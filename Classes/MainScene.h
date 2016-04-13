@@ -1,7 +1,7 @@
-#ifndef __MAIN_SCENE_H__
-#define __MAIN_SCENE_H__
+#pragma once
+#include "header.h"
 
-#include "cocos2d.h"
+class TeamState;
 
 class MainScene : public cocos2d::Layer
 {
@@ -15,6 +15,6 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(MainScene);
+private:
+	void StartGame(Ref* pSender, TeamState* team);
 };
-
-#endif // __HELLOWORLD_SCENE_H__

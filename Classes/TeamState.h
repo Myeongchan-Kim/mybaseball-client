@@ -1,4 +1,5 @@
 #pragma once
+
 class Batter;
 class Pitcher;
 class Fielder;
@@ -11,7 +12,7 @@ public:
 	{};
 	~TeamState();
 
-	Pitcher* m_curPictcher;
+	Pitcher* m_curPitcher;
 	Fielder* m_curFielder[9] = {};
 
 	Batter* m_curBatter;
@@ -19,5 +20,15 @@ public:
 	
 	Player* m_homeTeam[25] = {};
 	Player* m_awayTeam[25] = {};
+	
+	Pitcher* m_homePitcher;
+	Pitcher* m_awayPitcher;
+
+	Fielder* m_homeFielder[9] = {};
+	Fielder* m_awayFielder[9] = {};
+
+	Batter* m_homeBatList[9] = {};
+	Batter* m_awayBatList[9] = {};
+
 };
 

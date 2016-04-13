@@ -2,8 +2,6 @@
 #include "TeamState.h"
 
 
-
-
 TeamState::~TeamState()
 {
 }
