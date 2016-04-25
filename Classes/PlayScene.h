@@ -1,29 +1,16 @@
 #pragma once
 #include "header.h"
+#include "TodoInfo.h"
 
 class GameController;
-class TodoInfo;
 class TeamState;
+typedef std::shared_ptr<TodoInfo> P_TodoInfo;
 
 class PlayScene : public cocos2d::Layer
 {
 public:
 	static cocos2d::Scene* createScene(TeamState* teamInfo);
-	static PlayScene* create(TeamState* teamInfo)
-	{
-		PlayScene *pRet = new(std::nothrow) PlayScene(teamInfo);
-		if (pRet && pRet->init())
-		{
-			pRet->autorelease();
-			return pRet;
-		}
-		else
-		{
-			delete pRet;
-			pRet = NULL;
-			return NULL;
-		}
-	};
+	static PlayScene* create(TeamState* teamInfo);
 
 	virtual bool init();
 	virtual bool destroy();
@@ -35,11 +22,18 @@ private:
 	Layer* m_messegaeLayer = nullptr;
 	GameController* m_game = nullptr;
 	TeamState* m_teamInfo = nullptr;
-	int running_obj = 0;
+	int m_actionCounter = 0;
 
 	virtual void update(float dt) override;
-	void Excute(TodoInfo*);
+
+	void Excute(P_TodoInfo todo);
+	cocos2d::Sprite* GetObjectByTodoInfo(P_TodoInfo todo);
+	cocos2d::Action* GetActionByTodoInfo(P_TodoInfo todo, cocos2d::Sprite* spr);
+	void IncreseActionCounter();
+	void DecreseActionCounter();
+	//void AppendSprite(Ref* pSender, cocos2d::Sprite* spr);
 
 	PlayScene(TeamState* teamInfo);
 	~PlayScene();
 };
+ 

@@ -1,16 +1,20 @@
 #pragma once
 #include <deque>
-class TodoInfo;
+#include <memory>
+#include "TodoInfo.h"
+
+typedef std::shared_ptr<TodoInfo> P_TodoInfo;
 
 class GameController
 {
 public:
 	GameController();
 	~GameController();
-	TodoInfo* PopTodoList();
+	P_TodoInfo PopTodoList();
 	bool IsTodoListEmpty();
+	void next();
 
 private:
 
-	std::deque<TodoInfo*>m_todoList;
+	std::deque<P_TodoInfo>m_todoList;
 };

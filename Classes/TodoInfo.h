@@ -1,11 +1,12 @@
 #pragma once
 #include <iostream>
+#include <memory>
 
 class TodoInfo
 {
 public:
 
-	enum OBJ_NAME
+	enum OBJ_TYPE
 	{
 		STRIKE,
 		BALL,
@@ -37,10 +38,10 @@ public:
 	TodoInfo();
 	~TodoInfo();
 
-	OBJ_NAME m_obj;
+	OBJ_TYPE m_obj;
 	std::string m_objName;
 	
 	DO_NAME m_doName;
-
+	
 };
 

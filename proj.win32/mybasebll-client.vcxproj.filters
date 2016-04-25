@@ -54,11 +54,14 @@
     <ClCompile Include="..\Classes\Fielder.cpp">
       <Filter>src\Player</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\header.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\TeamState.cpp">
       <Filter>src\LogicControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ConstVar.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\header.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

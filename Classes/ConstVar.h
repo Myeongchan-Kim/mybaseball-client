@@ -3,5 +3,5 @@
 
 namespace ConstVar
 {
-	std::string SQAURE_IMG = "img/sqaure.jpg";
+	static std::string SQUARE_IMG = "img/square.jpg";
 }

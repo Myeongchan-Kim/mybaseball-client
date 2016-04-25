@@ -38,7 +38,7 @@ bool MainScene::init()
 	auto closeItemPosY = origin.y + closeItemHeight/2;
 	closeItem->setPosition(Point(closeItemPosX, closeItemPosY));
 
-	auto startItem = MenuItemImage::create(ConstVar::SQAURE_IMG, ConstVar::SQAURE_IMG, CC_CALLBACK_1(MainScene::StartGame, this, tmpTeam));
+	auto startItem = MenuItemImage::create(ConstVar::SQUARE_IMG, ConstVar::SQUARE_IMG, CC_CALLBACK_1(MainScene::StartGame, this, tmpTeam));
 	startItem->setScaleX(1.0);
 	startItem->setScaleY(0.5);
 	auto startItemWidth = startItem->getContentSize().width;
