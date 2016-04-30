@@ -1,13 +1,15 @@
 #pragma once
+#include "Unit.h"
+
 class Batter;
 class Pitcher;
 class Fielder;
 
-class Player
+class Player : public Unit
 {
 public:
 	Player(int id);
-	~Player();
+	virtual ~Player();
 
 private:
 	void request_stat(int id);

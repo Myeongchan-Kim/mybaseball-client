@@ -42,19 +42,38 @@ bool PlayScene::init()
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	m_groundLayer = LayerColor::create(Color4B(0,20,20,255));
+	m_groundLayer->setPosition(0, 0);
 
-	auto groundSpr = Sprite::create();
+	//stadium
+	auto groundSpr = Sprite::create(ConstVar::STADIUM_IMG);
+	groundSpr->setScaleX(ConstVar::goundLayerRect.size.width / groundSpr->getContentSize().width);
+	groundSpr->setScaleY(ConstVar::goundLayerRect.size.height / groundSpr->getContentSize().height );
+	groundSpr->setColor(Color3B(80, 100, 100));
+	groundSpr->setAnchorPoint(Point(0,0));
+
+	//set Count Board
+	auto outBoard = Sprite::create(ConstVar::SQUARE_IMG);
+	outBoard->setScaleX(ConstVar::countBoardRect.size.width / outBoard->getContentSize().width);
+	outBoard->setScaleY(ConstVar::countBoardRect.size.height / 3 / outBoard->getContentSize().height);
+	outBoard->setPosition(ConstVar::countBoardRect.getMidX(), ConstVar::countBoardRect.getMidY());
+
+
 	m_groundLayer->addChild(groundSpr);
 
 	m_batterListLayer = Layer::create();
-	auto batterListBackground = Sprite::create();
-	m_batterListLayer->addChild(batterListBackground);
+	//auto batterListBackground = Sprite::create(ConstVar::SQUARE_IMG, Rect(200, 0 , 200, 200));
+	//m_batterListLayer->addChild(batterListBackground);
 
 	m_gameLogLayer = Layer::create();
 	m_messegaeLayer = Layer::create();
 
 	m_game = new GameController();
 
+
+	addChild(m_groundLayer);
+	addChild(m_batterListLayer);
+	addChild(m_gameLogLayer);
+	addChild(m_messegaeLayer);
 	scheduleUpdate();
 	return true;
 }
@@ -94,10 +113,64 @@ void PlayScene::Excute(P_TodoInfo todo)
 
 Sprite* PlayScene::GetObjectByTodoInfo(P_TodoInfo todo)
 {
-	Sprite* spr = Sprite::create("img/square.jpg", Rect(0,0,100,100));
-	spr->setName(todo->m_objName);
-	//addChild(spr);
+	Sprite * spr = nullptr;
+	if (todo->m_doName == TodoInfo::CREATE)
+	{
+		switch (todo->m_obj){
+		case TodoInfo::OUTCOUNT:
+			spr = Sprite::create(ConstVar::SQUARE_IMG);
+			spr->setScaleX(ConstVar::countBoardRect.size.width / spr->getContentSize().width);
+			spr->setScaleY(ConstVar::countBoardRect.size.height / 3 / spr->getContentSize().height);
+			spr->setPosition(ConstVar::countBoardRect.getMidX(), ConstVar::countBoardRect.getMidY() - ConstVar::countBoardRect.size.height / 3);
+			break;
+		case TodoInfo::BALL:
+			spr = Sprite::create(ConstVar::SQUARE_IMG);
+			spr->setScaleX(ConstVar::countBoardRect.size.width / spr->getContentSize().width);
+			spr->setScaleY(ConstVar::countBoardRect.size.height / 3 / spr->getContentSize().height);
+			spr->setPosition(ConstVar::countBoardRect.getMidX(), ConstVar::countBoardRect.getMidY());
+			break;
+		case TodoInfo::STRIKE:
+			spr = Sprite::create(ConstVar::SQUARE_IMG);
+			spr->setScaleX(ConstVar::countBoardRect.size.width / spr->getContentSize().width);
+			spr->setScaleY(ConstVar::countBoardRect.size.height / 3 / spr->getContentSize().height);
+			spr->setPosition(ConstVar::countBoardRect.getMidX(), ConstVar::countBoardRect.getMidY());
+			break;
+		case TodoInfo::OBJ_TYPE::AWAY_SCORE:
+			spr = Sprite::create(ConstVar::OUT_IMG);
+			break;
+		case TodoInfo::OBJ_TYPE::HOME_SCORE:
+			spr = Sprite::create(ConstVar::OUT_IMG);
+			break;
+		case TodoInfo::OBJ_TYPE::BATTER:
+			spr = Sprite::create(ConstVar::OUT_IMG);
+			break;
+		case TodoInfo::OBJ_TYPE::FIELDER:
+			spr = Sprite::create(ConstVar::OUT_IMG);
+			break;
+		case TodoInfo::OBJ_TYPE::PITCHER:
+			spr = Sprite::create(ConstVar::OUT_IMG);
+			break;
+		case TodoInfo::OBJ_TYPE::RUNNER:
+			spr = Sprite::create(ConstVar::OUT_IMG);
+			break;
+		case TodoInfo::OBJ_TYPE::NOW_OFFENCE:
+			spr = Sprite::create(ConstVar::OUT_IMG);
+			break;
+		default:
+			throw "Unknown type";
+			break;
+
+		}
+
+		spr->setName(todo->m_objName);
+	}
+	
 	return spr;
+}
+
+Point PlayScene::GetDefaultPosition(P_TodoInfo todo)
+{
+	return Point(ConstVar::countBoardRect.getMidX(), ConstVar::countBoardRect.getMidY());
 }
 
 Action* PlayScene::GetActionByTodoInfo(P_TodoInfo todo, Sprite* spr)
@@ -105,7 +178,7 @@ Action* PlayScene::GetActionByTodoInfo(P_TodoInfo todo, Sprite* spr)
 	Action* action = DelayTime::create(0.0f);
 	if (todo->m_doName == TodoInfo::CREATE)
 	{
-		addChild(spr);
+		m_groundLayer->addChild(spr);
 	}
 	else if (todo->m_doName == TodoInfo::REMOVE)
 	{
@@ -143,7 +216,7 @@ Action* PlayScene::GetActionByTodoInfo(P_TodoInfo todo, Sprite* spr)
 
 	}
 	else{
-		throw true;
+		throw "Unknown action";
 	}
 
 	return action;

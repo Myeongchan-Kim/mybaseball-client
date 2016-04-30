@@ -29,6 +29,7 @@ private:
 	void Excute(P_TodoInfo todo);
 	cocos2d::Sprite* GetObjectByTodoInfo(P_TodoInfo todo);
 	cocos2d::Action* GetActionByTodoInfo(P_TodoInfo todo, cocos2d::Sprite* spr);
+	cocos2d::Point GetDefaultPosition(P_TodoInfo todo);
 	void IncreseActionCounter();
 	void DecreseActionCounter();
 	//void AppendSprite(Ref* pSender, cocos2d::Sprite* spr);

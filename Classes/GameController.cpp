@@ -23,6 +23,20 @@ void GameController::next()
 		todo->m_doName = TodoInfo::DO_NAME::CREATE;
 
 		m_todoList.push_back(todo);
+		
+		todo = std::make_shared<TodoInfo>();
+		todo->m_obj = TodoInfo::OBJ_TYPE::BALL;
+		todo->m_objName = std::string("BALLCOUNT");
+		todo->m_doName = TodoInfo::DO_NAME::CREATE;
+
+		m_todoList.push_back(todo);
+		
+		todo = std::make_shared<TodoInfo>();
+		todo->m_obj = TodoInfo::OBJ_TYPE::STRIKE;
+		todo->m_objName = std::string("STRIKECOUNT");
+		todo->m_doName = TodoInfo::DO_NAME::CREATE;
+
+		m_todoList.push_back(todo);
 		tmpFlag = true;
 	}
 }

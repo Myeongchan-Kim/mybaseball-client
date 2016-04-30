@@ -10,14 +10,17 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Player">
-      <UniqueIdentifier>{14842a82-70eb-4e9c-b686-1ceb92a5cdaf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Scene">
       <UniqueIdentifier>{36ba5ceb-0f6e-49eb-b879-03a981c0b7e1}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\LogicControl">
       <UniqueIdentifier>{56591c9a-4196-46cf-a10b-aa320d3b4881}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Unit">
+      <UniqueIdentifier>{de993366-e77b-4229-a509-f8c284188ac1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Unit\Player">
+      <UniqueIdentifier>{14842a82-70eb-4e9c-b686-1ceb92a5cdaf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -28,13 +31,13 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Batter.cpp">
-      <Filter>src\Player</Filter>
+      <Filter>src\Unit\Player</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Pitcher.cpp">
-      <Filter>src\Player</Filter>
+      <Filter>src\Unit\Player</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Player.cpp">
-      <Filter>src\Player</Filter>
+      <Filter>src\Unit\Player</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\PlayScene.cpp">
       <Filter>src\Scene</Filter>
@@ -52,7 +55,7 @@
       <Filter>src\LogicControl</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Fielder.cpp">
-      <Filter>src\Player</Filter>
+      <Filter>src\Unit\Player</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\TeamState.cpp">
       <Filter>src\LogicControl</Filter>
@@ -63,6 +66,9 @@
     <ClCompile Include="..\Classes\header.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Unit.cpp">
+      <Filter>src\Unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -72,13 +78,13 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Batter.h">
-      <Filter>src\Player</Filter>
+      <Filter>src\Unit\Player</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Pitcher.h">
-      <Filter>src\Player</Filter>
+      <Filter>src\Unit\Player</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Player.h">
-      <Filter>src\Player</Filter>
+      <Filter>src\Unit\Player</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\PlayScene.h">
       <Filter>src\Scene</Filter>
@@ -96,7 +102,7 @@
       <Filter>src\LogicControl</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Fielder.h">
-      <Filter>src\Player</Filter>
+      <Filter>src\Unit\Player</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\header.h">
       <Filter>src</Filter>
@@ -106,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\ConstVar.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Unit.h">
+      <Filter>src\Unit</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
