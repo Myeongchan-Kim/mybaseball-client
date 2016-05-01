@@ -1,10 +1,12 @@
 #pragma once
 #include "header.h"
 #include "TodoInfo.h"
+#include "Unit.h"
 
 class GameController;
 class TeamState;
 typedef std::shared_ptr<TodoInfo> P_TodoInfo;
+typedef std::shared_ptr<Unit> P_Unit;
 
 class PlayScene : public cocos2d::Layer
 {
@@ -23,13 +25,14 @@ private:
 	GameController* m_game = nullptr;
 	TeamState* m_teamInfo = nullptr;
 	int m_actionCounter = 0;
+	std::map<std::string, P_Unit> m_unitList;
 
 	virtual void update(float dt) override;
 
 	void Excute(P_TodoInfo todo);
-	cocos2d::Sprite* GetObjectByTodoInfo(P_TodoInfo todo);
-	cocos2d::Action* GetActionByTodoInfo(P_TodoInfo todo, cocos2d::Sprite* spr);
-	cocos2d::Point GetDefaultPosition(P_TodoInfo todo);
+	cocos2d::Sprite* GetSpriteByTodoInfo(P_TodoInfo todo);
+	cocos2d::Action* GetActionByTodoInfo(P_TodoInfo todo);
+	cocos2d::Point GetDefaultPosition(P_Unit unit);
 	void IncreseActionCounter();
 	void DecreseActionCounter();
 	//void AppendSprite(Ref* pSender, cocos2d::Sprite* spr);

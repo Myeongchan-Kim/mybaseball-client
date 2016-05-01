@@ -3,6 +3,10 @@
 #include "PlayScene.h"
 #include "GameController.h"
 #include "TodoInfo.h"
+#include "OutBoard.h"
+#include "BallBoard.h"
+#include "StrikeBoard.h"
+#include <assert.h>
 
 USING_NS_CC;
 
@@ -46,19 +50,28 @@ bool PlayScene::init()
 
 	//stadium
 	auto groundSpr = Sprite::create(ConstVar::STADIUM_IMG);
+	groundSpr->setName("Ground");
 	groundSpr->setScaleX(ConstVar::goundLayerRect.size.width / groundSpr->getContentSize().width);
 	groundSpr->setScaleY(ConstVar::goundLayerRect.size.height / groundSpr->getContentSize().height );
 	groundSpr->setColor(Color3B(80, 100, 100));
 	groundSpr->setAnchorPoint(Point(0,0));
+	m_groundLayer->addChild(groundSpr);
 
 	//set Count Board
-	auto outBoard = Sprite::create(ConstVar::SQUARE_IMG);
-	outBoard->setScaleX(ConstVar::countBoardRect.size.width / outBoard->getContentSize().width);
-	outBoard->setScaleY(ConstVar::countBoardRect.size.height / 3 / outBoard->getContentSize().height);
-	outBoard->setPosition(ConstVar::countBoardRect.getMidX(), ConstVar::countBoardRect.getMidY());
+	P_Unit outBoard = std::make_shared<OutBoard>();
+	m_groundLayer->addChild(outBoard->GetSprite());
+	m_unitList.insert(std::pair<std::string, P_Unit>(std::to_string(TodoInfo::OUTCOUNT), outBoard));
+	
+	P_Unit strikeBoard = std::make_shared<StrikeBoard>();
+	m_groundLayer->addChild(strikeBoard->GetSprite());
+	m_unitList.insert(std::pair<std::string, P_Unit>(std::to_string(TodoInfo::STRIKE), strikeBoard));
+	
+	P_Unit ballBoard = std::make_shared<BallBoard>();
+	m_groundLayer->addChild(ballBoard->GetSprite());
+	m_unitList.insert(std::pair<std::string, P_Unit>(std::to_string(TodoInfo::BALL), ballBoard));
 
+	//set Score Board
 
-	m_groundLayer->addChild(groundSpr);
 
 	m_batterListLayer = Layer::create();
 	//auto batterListBackground = Sprite::create(ConstVar::SQUARE_IMG, Rect(200, 0 , 200, 200));
@@ -104,116 +117,84 @@ void PlayScene::Excute(P_TodoInfo todo)
 	CallFunc* start = CallFunc::create(CC_CALLBACK_0(PlayScene::IncreseActionCounter, this));
 	CallFunc* finish = CallFunc::create(CC_CALLBACK_0(PlayScene::DecreseActionCounter, this));
 
-	Sprite* spr = GetObjectByTodoInfo(todo);
-	Action* action = GetActionByTodoInfo(todo, spr);
+	Sprite* spr = GetSpriteByTodoInfo(todo);
+	Action* action = GetActionByTodoInfo(todo);
 	Sequence* seq = Sequence::create(start, action, finish, NULL);
 
 	spr->runAction(seq);
 }
 
-Sprite* PlayScene::GetObjectByTodoInfo(P_TodoInfo todo)
+Sprite* PlayScene::GetSpriteByTodoInfo(P_TodoInfo todo)
 {
 	Sprite * spr = nullptr;
 	if (todo->m_doName == TodoInfo::CREATE)
 	{
-		switch (todo->m_obj){
-		case TodoInfo::OUTCOUNT:
-			spr = Sprite::create(ConstVar::SQUARE_IMG);
-			spr->setScaleX(ConstVar::countBoardRect.size.width / spr->getContentSize().width);
-			spr->setScaleY(ConstVar::countBoardRect.size.height / 3 / spr->getContentSize().height);
-			spr->setPosition(ConstVar::countBoardRect.getMidX(), ConstVar::countBoardRect.getMidY() - ConstVar::countBoardRect.size.height / 3);
-			break;
-		case TodoInfo::BALL:
-			spr = Sprite::create(ConstVar::SQUARE_IMG);
-			spr->setScaleX(ConstVar::countBoardRect.size.width / spr->getContentSize().width);
-			spr->setScaleY(ConstVar::countBoardRect.size.height / 3 / spr->getContentSize().height);
-			spr->setPosition(ConstVar::countBoardRect.getMidX(), ConstVar::countBoardRect.getMidY());
-			break;
-		case TodoInfo::STRIKE:
-			spr = Sprite::create(ConstVar::SQUARE_IMG);
-			spr->setScaleX(ConstVar::countBoardRect.size.width / spr->getContentSize().width);
-			spr->setScaleY(ConstVar::countBoardRect.size.height / 3 / spr->getContentSize().height);
-			spr->setPosition(ConstVar::countBoardRect.getMidX(), ConstVar::countBoardRect.getMidY());
-			break;
-		case TodoInfo::OBJ_TYPE::AWAY_SCORE:
-			spr = Sprite::create(ConstVar::OUT_IMG);
-			break;
-		case TodoInfo::OBJ_TYPE::HOME_SCORE:
-			spr = Sprite::create(ConstVar::OUT_IMG);
-			break;
-		case TodoInfo::OBJ_TYPE::BATTER:
-			spr = Sprite::create(ConstVar::OUT_IMG);
-			break;
-		case TodoInfo::OBJ_TYPE::FIELDER:
-			spr = Sprite::create(ConstVar::OUT_IMG);
-			break;
-		case TodoInfo::OBJ_TYPE::PITCHER:
-			spr = Sprite::create(ConstVar::OUT_IMG);
-			break;
-		case TodoInfo::OBJ_TYPE::RUNNER:
-			spr = Sprite::create(ConstVar::OUT_IMG);
-			break;
-		case TodoInfo::OBJ_TYPE::NOW_OFFENCE:
-			spr = Sprite::create(ConstVar::OUT_IMG);
-			break;
-		default:
-			throw "Unknown type";
-			break;
-
-		}
-
-		spr->setName(todo->m_objName);
+		
+	}
+	else{
+		auto pair = m_unitList.find(todo->m_objName);
+		if (pair != m_unitList.end())
+			spr = pair->second->GetSprite();
+		else
+			throw "Unknown obj";
 	}
 	
+	assert(spr != nullptr);
 	return spr;
 }
 
-Point PlayScene::GetDefaultPosition(P_TodoInfo todo)
+Point PlayScene::GetDefaultPosition(P_Unit unit)
 {
 	return Point(ConstVar::countBoardRect.getMidX(), ConstVar::countBoardRect.getMidY());
 }
 
-Action* PlayScene::GetActionByTodoInfo(P_TodoInfo todo, Sprite* spr)
+Action* PlayScene::GetActionByTodoInfo(P_TodoInfo todo)
 {
+	auto pair = m_unitList.find(todo->m_objName);
+	if (pair == m_unitList.end())
+		throw "No unit";
+	auto unit = pair->second;
+
 	Action* action = DelayTime::create(0.0f);
 	if (todo->m_doName == TodoInfo::CREATE)
 	{
-		m_groundLayer->addChild(spr);
+		m_groundLayer->addChild(unit->GetSprite());
 	}
 	else if (todo->m_doName == TodoInfo::REMOVE)
 	{
-
+		m_groundLayer->removeChild(unit->GetSprite());
 	}
 	else if (todo->m_doName == TodoInfo::SET_ZERO)
 	{
-
+		action = unit->SetZero();
 	}
 	else if (todo->m_doName == TodoInfo::PLUS_ONE)
 	{
-
+		action = unit->PlusOne();
 	}
 	else if (todo->m_doName == TodoInfo::MINUS_ONE)
 	{
+		action = unit->MinusOne();
 	}
 	else if (todo->m_doName == TodoInfo::MOVE_TO_1)
 	{
-
+		action = unit->MoveTo1();
 	}
 	else if (todo->m_doName == TodoInfo::MOVE_TO_2)
 	{
-
+		action = unit->MoveTo2();
 	}
 	else if (todo->m_doName == TodoInfo::MOVE_TO_3)
 	{
-
+		action = unit->MoveTo3();
 	}
 	else if (todo->m_doName == TodoInfo::MOVE_TO_H)
 	{
-
+		action = unit->MoveToH();
 	}
 	else if (todo->m_doName == TodoInfo::CHANGE_SIDE)
 	{
-
+		action = unit->ChangeSide();
 	}
 	else{
 		throw "Unknown action";

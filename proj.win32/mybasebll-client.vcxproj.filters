@@ -22,6 +22,9 @@
     <Filter Include="src\Unit\Player">
       <UniqueIdentifier>{14842a82-70eb-4e9c-b686-1ceb92a5cdaf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Unit\CountBoard">
+      <UniqueIdentifier>{1558e5ed-2731-466a-8b96-13e0495d3d63}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -69,6 +72,15 @@
     <ClCompile Include="..\Classes\Unit.cpp">
       <Filter>src\Unit</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\OutBoard.cpp">
+      <Filter>src\Unit\CountBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BallBoard.cpp">
+      <Filter>src\Unit\CountBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StrikeBoard.cpp">
+      <Filter>src\Unit\CountBoard</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -115,6 +127,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Unit.h">
       <Filter>src\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OutBoard.h">
+      <Filter>src\Unit\CountBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BallBoard.h">
+      <Filter>src\Unit\CountBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StrikeBoard.h">
+      <Filter>src\Unit\CountBoard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
