@@ -17,4 +17,5 @@ public:
     CREATE_FUNC(MainScene);
 private:
 	void StartGame(Ref* pSender, TeamState* team);
+	TeamState* m_teamInfo;
 };

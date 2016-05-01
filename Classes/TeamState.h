@@ -8,8 +8,7 @@ class Player;
 class TeamState
 {
 public:
-	TeamState()
-	{};
+	TeamState();
 	~TeamState();
 
 	Pitcher* m_curPitcher;
@@ -30,5 +29,6 @@ public:
 	Batter* m_homeBatList[9] = {};
 	Batter* m_awayBatList[9] = {};
 
+	void SetSampleList();
 };
 
