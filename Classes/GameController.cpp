@@ -18,18 +18,18 @@ void GameController::next()
 	{
 		P_TodoInfo todo = std::make_shared<TodoInfo>();
 
-		todo->m_obj = TodoInfo::OBJ_TYPE::OUTCOUNT;
-		todo->m_objName = std::to_string(TodoInfo::OBJ_TYPE::OUTCOUNT);
+		todo->m_obj = TodoInfo::OBJ_TYPE::AWAY_SCORE;
+		todo->m_objName = std::to_string(TodoInfo::OBJ_TYPE::AWAY_SCORE);
 		todo->m_doName = TodoInfo::DO_NAME::PLUS_ONE;
 		m_todoList.push_back(todo);
 
-		todo->m_obj = TodoInfo::OBJ_TYPE::OUTCOUNT;
-		todo->m_objName = std::to_string(TodoInfo::OBJ_TYPE::OUTCOUNT);
+		todo->m_obj = TodoInfo::OBJ_TYPE::AWAY_SCORE;
+		todo->m_objName = std::to_string(TodoInfo::OBJ_TYPE::AWAY_SCORE);
 		todo->m_doName = TodoInfo::DO_NAME::PLUS_ONE;
 		m_todoList.push_back(todo);
 
-		todo->m_obj = TodoInfo::OBJ_TYPE::OUTCOUNT;
-		todo->m_objName = std::to_string(TodoInfo::OBJ_TYPE::OUTCOUNT);
+		todo->m_obj = TodoInfo::OBJ_TYPE::AWAY_SCORE;
+		todo->m_objName = std::to_string(TodoInfo::OBJ_TYPE::AWAY_SCORE);
 		todo->m_doName = TodoInfo::DO_NAME::PLUS_ONE;
 		m_todoList.push_back(todo);
 		tmpFlag = true;

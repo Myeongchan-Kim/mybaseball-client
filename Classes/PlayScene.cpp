@@ -74,10 +74,10 @@ bool PlayScene::init()
 	//set Score Board
 	P_Unit HscoreBoard = std::make_shared<ScoreBoard>(TodoInfo::HOME_SCORE);
 	m_groundLayer->addChild(HscoreBoard->GetSprite());
-	m_unitList.insert(std::pair<std::string, P_Unit>(std::to_string(TodoInfo::HOME_SCORE), ballBoard));
+	m_unitList.insert(std::pair<std::string, P_Unit>(std::to_string(TodoInfo::HOME_SCORE), HscoreBoard));
 	P_Unit AscoreBoard = std::make_shared<ScoreBoard>(TodoInfo::AWAY_SCORE);
 	m_groundLayer->addChild(AscoreBoard->GetSprite());
-	m_unitList.insert(std::pair<std::string, P_Unit>(std::to_string(TodoInfo::AWAY_SCORE), ballBoard));
+	m_unitList.insert(std::pair<std::string, P_Unit>(std::to_string(TodoInfo::AWAY_SCORE), AscoreBoard));
 
 	m_batterListLayer = Layer::create();
 	//auto batterListBackground = Sprite::create(ConstVar::SQUARE_IMG, Rect(200, 0 , 200, 200));

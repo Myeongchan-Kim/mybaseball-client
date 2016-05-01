@@ -19,6 +19,6 @@ namespace ConstVar
 	static std::string OUTBOARD_NAME = "OUTCOUNT";
 	static std::string STRIKEBOARD_NAME = "STRIKECOUNT";
 	static std::string BALLBOARD_NAME = "BALLCOUNT";
-	static std::string HSCOREBOARD_NAME = "HOMESCORE";
-	static std::string ASCOREBOARD_NAME = "AWAYSCORE";
+	//static std::string HSCOREBOARD_NAME = "HOMESCORE";
+	//static std::string ASCOREBOARD_NAME = "AWAYSCORE";
 }

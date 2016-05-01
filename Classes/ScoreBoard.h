@@ -9,6 +9,7 @@ public:
 	~ScoreBoard();
 
 	void SetScore(int score);
+	virtual cocos2d::Action* PlusOne() override;
 private:
 };
 

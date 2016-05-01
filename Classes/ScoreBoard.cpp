@@ -3,6 +3,8 @@
 #include "ConstVar.h"
 #include "TodoInfo.h"
 
+USING_NS_CC;
+
 ScoreBoard::ScoreBoard(TodoInfo::OBJ_TYPE type)
 {
 	if (type == TodoInfo::AWAY_SCORE)
@@ -50,11 +52,11 @@ ScoreBoard::ScoreBoard(TodoInfo::OBJ_TYPE type)
 
 	if (type == TodoInfo::AWAY_SCORE)
 	{
-		m_spr->setName(ConstVar::ASCOREBOARD_NAME);
+		m_spr->setName(std::to_string(TodoInfo::AWAY_SCORE));
 	}
 	else if (type == TodoInfo::HOME_SCORE)
 	{
-		m_spr->setName(ConstVar::HSCOREBOARD_NAME);
+		m_spr->setName(std::to_string(TodoInfo::HOME_SCORE));
 	}
 	m_spr->retain();
 }
@@ -73,4 +75,16 @@ void ScoreBoard::SetScore(int score)
 	scoreLabel->setName("score");
 	scoreLabel->setPosition({ 50, 11 });
 	m_spr->addChild(scoreLabel);
+}
+
+Action* ScoreBoard::PlusOne()
+{
+	std::string lable = "";
+	Label* scoreLabel = static_cast<Label*>(m_spr->getChildByName("score"));
+	if (scoreLabel != nullptr)
+		lable = scoreLabel->getString();
+	int score = std::stoi(lable);
+	++score;
+	SetScore(score);
+	return DelayTime::create(0.0f);
 }
