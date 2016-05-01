@@ -1,12 +1,14 @@
 #pragma once
 #include "Unit.h"
+#include "TodoInfo.h"
 
-class BallBoard : public Unit
+class ScoreBoard : public Unit
 {
 public:
-	BallBoard();
-	~BallBoard();
+	ScoreBoard(TodoInfo::OBJ_TYPE type);
+	~ScoreBoard();
 
+	void SetScore(int score);
 private:
 };
 

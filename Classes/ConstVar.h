@@ -14,6 +14,7 @@ namespace ConstVar
 	static Rect goundLayerRect = Rect(0, 0, 320, 320);
 	static Rect batterListLayerRect = Rect(320, 0, 80, 320);
 	static Rect countBoardRect = Rect(230, 260, 80, 50);
+	static Rect scoreBoardRect = Rect(20, 260, 70, 50);
 
 	static std::string OUTBOARD_NAME = "OUTCOUNT";
 	static std::string STRIKEBOARD_NAME = "STRIKECOUNT";

@@ -156,6 +156,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\Classes\OutBoard.cpp" />
+    <ClCompile Include="..\Classes\ScoreBoard.cpp" />
     <ClCompile Include="..\Classes\StrikeBoard.cpp" />
     <ClCompile Include="..\Classes\TeamState.cpp" />
     <ClCompile Include="..\Classes\Fielder.cpp" />
@@ -175,6 +176,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Batter.h" />
     <ClInclude Include="..\Classes\ConstVar.h" />
     <ClInclude Include="..\Classes\OutBoard.h" />
+    <ClInclude Include="..\Classes\ScoreBoard.h" />
     <ClInclude Include="..\Classes\StrikeBoard.h" />
     <ClInclude Include="..\Classes\TeamState.h" />
     <ClInclude Include="..\Classes\Fielder.h" />
