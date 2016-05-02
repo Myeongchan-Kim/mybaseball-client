@@ -42,7 +42,7 @@ void TeamState::SetSampleList()
 	m_teamNameA = teamA["name"].GetString();
 	for (int i = 0; i < 25; i++ )
 	{
-
+		
 	}
 
 	const auto& teamH = d["teamB"];

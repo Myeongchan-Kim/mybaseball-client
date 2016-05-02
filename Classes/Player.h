@@ -8,15 +8,15 @@ class Fielder;
 class Player : public Unit
 {
 public:
-	Player(int id);
+	Player(int id, int batELO, int pitELO);
 	virtual ~Player();
-	std::string name;
+	std::string m_name;
 
 private:
 	void request_stat(int id);
 
-	Batter* batter = nullptr;
-	Pitcher* pitcher = nullptr;
-	Fielder* Fielder = nullptr;
+	Batter* m_batter = nullptr;
+	Pitcher* m_pitcher = nullptr;
+	Fielder* m_fielder = nullptr;
 };
 
