@@ -1,5 +1,7 @@
 #pragma once
-class Fielder
+#include "Unit.h"
+
+class Fielder :public Unit
 {
 public:
 	Fielder();

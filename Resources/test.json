@@ -1,0 +1,16 @@
+{
+  "teamA" :{
+    "name":"oldBee",
+    "players":
+    [
+      {"name":"Enempy1",  "batELO":1400,"pitELO":1400 }
+    ]
+  },
+  "teamB" :{
+    "name":"newBee",
+    "players":
+    [
+      {"name":"Player1",  "batELO":1400,"pitELO":1400 }
+    ]
+  }
+}

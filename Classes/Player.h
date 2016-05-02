@@ -10,6 +10,7 @@ class Player : public Unit
 public:
 	Player(int id);
 	virtual ~Player();
+	std::string name;
 
 private:
 	void request_stat(int id);

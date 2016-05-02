@@ -6,6 +6,8 @@
 
 USING_NS_CC;
 
+TeamState* g_teamInfo = nullptr;
+
 Scene* MainScene::createScene()
 {
     auto scene = Scene::create();
@@ -25,8 +27,8 @@ bool MainScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	m_teamInfo = new TeamState();
-	m_teamInfo->SetSampleList();
+	g_teamInfo = new TeamState();
+	g_teamInfo->SetSampleList();
 
 	//stadium
 	auto groundSpr = Sprite::create(ConstVar::STADIUM_IMG);
@@ -36,7 +38,7 @@ bool MainScene::init()
 	groundSpr->setColor(Color3B(80, 100, 100));
 	groundSpr->setAnchorPoint(Point(0, 0));
 	addChild(groundSpr);
-
+	
 	//selected player list
 	auto selectedPlayerBG = Sprite::create(ConstVar::SQUARE_IMG,
 		Rect(0, 0, ConstVar::batterListLayerRect.size.width, ConstVar::batterListLayerRect.size.height));
@@ -50,7 +52,7 @@ bool MainScene::init()
 	allPlayerBG->setPosition(ConstVar::AllPlayersLayerRect.getMidX(), ConstVar::AllPlayersLayerRect.getMidY());
 	allPlayerBG->setColor({ 50, 50, 50 });
 	addChild(allPlayerBG);
-
+	
 	//quit button
 	auto closeItem = MenuItemImage::create(
 		"CloseNormal.png",
@@ -86,6 +88,7 @@ void MainScene::StartGame(Ref* pSender, TeamState* team)
 	auto playScene = PlayScene::createScene(team);
 	Director::getInstance()->replaceScene(playScene);
 }
+
 
 void MainScene::menuCloseCallback(Ref* pSender)
 {
