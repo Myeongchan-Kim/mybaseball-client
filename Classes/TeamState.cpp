@@ -2,6 +2,7 @@
 #include "TeamState.h"
 #include "rapidjson\document.h"
 #include <fstream>
+#include "Player.h"
 USING_NS_CC;
 
 TeamState::TeamState() :
@@ -42,9 +43,26 @@ void TeamState::SetSampleList()
 	m_teamNameA = teamA["name"].GetString();
 	for (int i = 0; i < 25; i++ )
 	{
-		
+		const auto& player = teamA["players"][i];
+		assert(player.IsObject());
+		std::string name = player["name"].GetString();
+		int batELO = player["batELO"].GetInt();
+		int pitELO = player["pitELO"].GetInt();
+		assert(g_teamInfo != nullptr);
+		g_teamInfo->m_awayTeam[i] = new Player(i, name, batELO, pitELO);
 	}
 
 	const auto& teamH = d["teamB"];
 	m_teamNameH = teamH["name"].GetString();
+	for (int i = 0; i < 25; i++)
+	{
+		const auto& player = teamH["players"][i];
+		assert(player.IsObject());
+		std::string name = player["name"].GetString();
+		int batELO = player["batELO"].GetInt();
+		int pitELO = player["pitELO"].GetInt();
+		assert(g_teamInfo != nullptr);
+		g_teamInfo->m_homeTeam[i] = new Player(i, name, batELO, pitELO);
+	}
+
 }

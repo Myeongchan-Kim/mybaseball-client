@@ -36,3 +36,4 @@ public:
 	void SetSampleList();
 };
 
+extern TeamState* g_teamInfo;
