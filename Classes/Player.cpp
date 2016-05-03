@@ -4,7 +4,7 @@
 #include "Pitcher.h"
 #include "Fielder.h"
 
-Player::Player(int id, int batELO, int pitELO)
+Player::Player(int id, std::string name, int batELO, int pitELO) : m_name(name)
 {
 
 	m_batter = new Batter(batELO);

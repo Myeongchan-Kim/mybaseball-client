@@ -8,7 +8,7 @@ class Fielder;
 class Player : public Unit
 {
 public:
-	Player(int id, int batELO, int pitELO);
+	Player(int id,std::string name, int batELO, int pitELO);
 	virtual ~Player();
 	std::string m_name;
 
