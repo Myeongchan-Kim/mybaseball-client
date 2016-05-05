@@ -34,6 +34,5 @@ public:
 	std::string m_teamNameA;
 
 	void SetSampleList();
+	Player* GetPlayer(std::string teamName, int idx);
 };
-
-extern TeamState* g_teamInfo;

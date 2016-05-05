@@ -17,10 +17,13 @@ namespace ConstVar
 	static Rect countBoardRect = Rect(230, 260, 80, 50);
 	static Rect scoreBoardRect = Rect(20, 260, 70, 50);
 	static Rect startMenuRect = Rect(320, 0, 120, 40);
+	static Rect playerRect = Rect(0, 0, 70, 20);
 
 	static std::string OUTBOARD_NAME = "OUTCOUNT";
 	static std::string STRIKEBOARD_NAME = "STRIKECOUNT";
 	static std::string BALLBOARD_NAME = "BALLCOUNT";
-	//static std::string HSCOREBOARD_NAME = "HOMESCORE";
-	//static std::string ASCOREBOARD_NAME = "AWAYSCORE";
+	static std::string SAMPLE_HOMENAME = "newBee";
+	static std::string SAMPLE_AWAYNAME = "oldBee";
+	static std::string HSCOREBOARD_NAME = "HOMESCORE";
+	static std::string ASCOREBOARD_NAME = "AWAYSCORE";
 }

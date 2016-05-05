@@ -1,6 +1,6 @@
 #pragma once
 #include "header.h"
-
+class Player;
 class TeamState;
 
 class MainScene : public cocos2d::Layer
@@ -15,6 +15,8 @@ public:
 	
     // implement the "static create()" method manually
     CREATE_FUNC(MainScene);
+
+	cocos2d::MenuItemImage* MakeMenuItemFromPlayer(Player * p);
 private:
 	void StartGame(Ref* pSender, TeamState* team);
 	TeamState* m_teamInfo;

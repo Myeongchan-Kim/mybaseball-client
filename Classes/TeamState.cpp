@@ -1,4 +1,5 @@
 #include "header.h"
+#include "ConstVar.h"
 #include "TeamState.h"
 #include "rapidjson\document.h"
 #include <fstream>
@@ -27,6 +28,11 @@ TeamState::~TeamState()
 
 void TeamState::SetSampleList()
 {
+	if (*m_homeTeam || *m_awayTeam){
+		throw "already setted";
+		return;
+	}
+
 	auto path = FileUtils::getInstance()->fullPathForFilename("sample.json");
 	ssize_t size;
 	auto str = FileUtils::getInstance()->getFileData(path, "r", &size);
@@ -41,6 +47,7 @@ void TeamState::SetSampleList()
 	assert(d.IsObject());
 	const auto& teamA = d["teamA"];
 	m_teamNameA = teamA["name"].GetString();
+	assert(m_teamNameA == ConstVar::SAMPLE_AWAYNAME);
 	for (int i = 0; i < 25; i++ )
 	{
 		const auto& player = teamA["players"][i];
@@ -48,12 +55,12 @@ void TeamState::SetSampleList()
 		std::string name = player["name"].GetString();
 		int batELO = player["batELO"].GetInt();
 		int pitELO = player["pitELO"].GetInt();
-		assert(g_teamInfo != nullptr);
-		g_teamInfo->m_awayTeam[i] = new Player(i, name, batELO, pitELO);
+		m_awayTeam[i] = new Player(i, name, batELO, pitELO);
 	}
 
 	const auto& teamH = d["teamB"];
 	m_teamNameH = teamH["name"].GetString();
+	assert(m_teamNameH == ConstVar::SAMPLE_HOMENAME);
 	for (int i = 0; i < 25; i++)
 	{
 		const auto& player = teamH["players"][i];
@@ -61,8 +68,20 @@ void TeamState::SetSampleList()
 		std::string name = player["name"].GetString();
 		int batELO = player["batELO"].GetInt();
 		int pitELO = player["pitELO"].GetInt();
-		assert(g_teamInfo != nullptr);
-		g_teamInfo->m_homeTeam[i] = new Player(i, name, batELO, pitELO);
+		m_homeTeam[i] = new Player(i, name, batELO, pitELO);
 	}
+}
 
+Player* TeamState::GetPlayer(std::string teamName, int idx)
+{
+	if (teamName == m_teamNameA)
+	{
+		Player* p = m_awayTeam[idx];
+		return p;
+	}
+	else if (teamName == m_teamNameH)
+	{
+		Player* p = m_homeTeam[idx];
+		return p;
+	}
 }
