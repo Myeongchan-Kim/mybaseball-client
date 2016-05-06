@@ -20,4 +20,5 @@ public:
 private:
 	void StartGame(Ref* pSender, TeamState* team);
 	TeamState* m_teamInfo;
+	void onMouseScroll(cocos2d::Event* e);
 };

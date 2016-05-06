@@ -5,6 +5,7 @@
 #include "PlayScene.h"
 #include "Player.h"
 
+
 USING_NS_CC;
 
 Scene* MainScene::createScene()
@@ -57,7 +58,7 @@ bool MainScene::init()
 		Rect(0, 0, ConstVar::AllPlayersLayerRect.size.width, ConstVar::AllPlayersLayerRect.size.height));
 	allPlayerBG->setPosition(ConstVar::AllPlayersLayerRect.getMidX(), ConstVar::AllPlayersLayerRect.getMidY());
 	allPlayerBG->setColor({ 50, 50, 50 });
-
+	
 	Vector<MenuItem*> playerList;
 	for (int i = 0; i < 25; i++)
 	{
@@ -70,9 +71,14 @@ bool MainScene::init()
 	}
 	auto playerMenu = Menu::createWithArray(playerList);
 	playerMenu->setPosition(Vec2::ZERO);
+	playerMenu->setName("playerList");
 	addChild(allPlayerBG);
 	addChild(playerMenu);
 
+	auto _mouseListener = EventListenerMouse::create();
+	_mouseListener->onMouseScroll = CC_CALLBACK_1(MainScene::onMouseScroll, this);
+
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(_mouseListener, this);
 
 
 	//quit button
@@ -112,19 +118,30 @@ MenuItemImage* MainScene::MakeMenuItemFromPlayer(Player * p)
 	auto playerItem = MenuItemImage::create();
 	playerItem->setNormalImage(p->GetSprite());
 	playerItem->setAnchorPoint({ 0.5, 0.5 });
-	auto nameTag = Label::create(p->m_name, "arial", 15);
+	auto nameTag = Label::create(p->m_name, "arial", 12);
 	nameTag->setPosition(ConstVar::playerRect.getMidX(), ConstVar::playerRect.getMidY());
 	playerItem->addChild(nameTag);
 	return playerItem;
 }
 
+void MainScene::onMouseScroll(Event *ev)
+{
+	EventMouse* e = (EventMouse*)ev;
+	if (e->getScrollY())
+	{
+		auto scrollAmount = e->getScrollY();
+		auto playerList = getChildByName("playerList");
+		auto pos = playerList->getPositionY();
+		pos += scrollAmount*3;
+		playerList->setPositionY(pos);
+	}
+}
 
 void MainScene::StartGame(Ref* pSender, TeamState* team)
 {
 	auto playScene = PlayScene::createScene(team);
 	Director::getInstance()->replaceScene(playScene);
 }
-
 
 void MainScene::menuCloseCallback(Ref* pSender)
 {
